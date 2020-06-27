@@ -1,7 +1,5 @@
-//password:4dzVH7WDVFRmxTmN
-//mongodb+srv://eunicLab:<password>@cluster0-qsdh0.mongodb.net/test?retryWrites=true&w=majority
-
-
+//MongoDB password:YEmYFbK5J0npTVBC
+//mongodb+srv://eunice:<password>@cluster0-x5x47.mongodb.net/<dbname>?retryWrites=true&w=majority
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -11,25 +9,32 @@ const userRoutes = require('./routes/user');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://eunicLab:4dzVH7WDVFRmxTmN@cluster0-qsdh0.mongodb.net/test?retryWrites=true&w=majority')
-.then(()=>{
-	console.log('Successfully connected to MongoDB Atlas!');
-})
-.catch((error)=>{
-	console.log('Unable to connect to MongoDB Atlas!')
-	console.error(error);
-});
+mongoose
+  .connect(
+    'mongodb+srv://eunice:YEmYFbK5J0npTVBC@cluster0-x5x47.mongodb.net/shopsmart?retryWrites=true&w=majority'
+  )
+  .then(() => {
+    console.log('Successfully connected to MongoDB Atlas!');
+  })
+  .catch((error) => {
+    console.log('Unable to connect to MongoDB Atlas!');
+    console.error(error);
+  });
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization'
+  );
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, DELETE, PATCH, OPTIONS'
+  );
   next();
 });
 
 app.use(bodyParser.json());
-
-
 
 app.use('/api/stuff', stuffRoutes);
 app.use('/api/auth', userRoutes);
