@@ -1,5 +1,5 @@
 //MongoDB password:YEmYFbK5J0npTVBC
-//mongodb+srv://eunice:<password>@cluster0-x5x47.mongodb.net/<dbname>?retryWrites=true&w=majority
+//mongodb+srv://eunice:<password>@cluster0.amxdjbo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -11,7 +11,7 @@ const app = express();
 
 mongoose
   .connect(
-    'mongodb+srv://eunice:YEmYFbK5J0npTVBC@cluster0-x5x47.mongodb.net/shopsmart?retryWrites=true&w=majority'
+    'mongodb+srv://eunice:YEmYFbK5J0npTVBC@cluster0.amxdjbo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
   )
   .then(() => {
     console.log('Successfully connected to MongoDB Atlas!');
